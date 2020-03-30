@@ -10,7 +10,9 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface HCard {}
+  interface HCard {
+    'outlined'?: boolean;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -48,7 +50,9 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface HCard {}
+  interface HCard {
+    'outlined'?: boolean;
+  }
   interface MyComponent {
     /**
     * The first name

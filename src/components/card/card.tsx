@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core'
+import { Component, Host, h, Prop } from '@stencil/core'
 
 @Component({
   tag: 'h-card',
@@ -6,7 +6,17 @@ import { Component, h } from '@stencil/core'
   shadow: true
 })
 export class Card {
+  @Prop() outlined?: boolean
+
   render() {
-    return <div><slot></slot></div>
+    return (
+      <div
+        class={{
+          'outlined': this.outlined
+        }}
+      >
+        <slot></slot>
+      </div>
+    )
   }
 }
