@@ -5,7 +5,9 @@
   --card-border-radius: 5px;
 
   .outlined {
-    border: var(--card-border-width) var(--card-border-style) var(--card-border-color);
+    border-width: var(--card-border-width);
+    border-style: var(--card-border-style);
+    border-color: var(--card-border-color);
     border-radius: 5px;
   }
 }
