@@ -10,6 +10,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
+  interface HCard {}
   interface MyComponent {
     /**
     * The first name
@@ -29,17 +30,25 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLHCardElement extends Components.HCard, HTMLStencilElement {}
+  var HTMLHCardElement: {
+    prototype: HTMLHCardElement;
+    new (): HTMLHCardElement;
+  };
+
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   var HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
     new (): HTMLMyComponentElement;
   };
   interface HTMLElementTagNameMap {
+    'h-card': HTMLHCardElement;
     'my-component': HTMLMyComponentElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface HCard {}
   interface MyComponent {
     /**
     * The first name
@@ -56,6 +65,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'h-card': HCard;
     'my-component': MyComponent;
   }
 }
@@ -66,6 +76,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'h-card': LocalJSX.HCard & JSXBase.HTMLAttributes<HTMLHCardElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
     }
   }
