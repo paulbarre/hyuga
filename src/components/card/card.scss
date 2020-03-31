@@ -1,26 +1,71 @@
 :host {
-  --card-padding: 10px;
-  --card-border-width: thin;
-  --card-border-style: solid;
-  --card-border-color: black;
-  --card-rounded-radius: 5px;
-  --card-box-shadow: 0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);
+  $rounded: true;
+  $outlined: false;
+  $raised: true;
 
-  .content {
-    padding: var(--card-padding);
+  $card-padding: 10px;
+  $card-outlined-width: thin;
+  $card-outlined-style: solid;
+  $card-outlined-color: black;
+  $card-rounded-radius: 5px;
+  $card-raised-shadow: 0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);
+
+  @mixin rounded-card {
+    border-radius: $card-rounded-radius;
   }
 
-  .rounded {
-    border-radius: var(--card-rounded-radius);
+  @mixin raised-card {
+    box-shadow: $card-raised-shadow;
   }
 
-  .outlined {
-    border-width: var(--card-border-width);
-    border-style: var(--card-border-style);
-    border-color: var(--card-border-color);
+  @mixin outlined-card {
+    border-width: $card-outlined-width;
+    border-style: $card-outlined-style;
+    border-color: $card-outlined-color;
   }
 
-  .raised {
-    box-shadow: var(--card-box-shadow);
+  > div {
+    padding: $card-padding;
+  }
+
+  @mixin dynamicMixin($name) {
+    @if $name == 'rounded' {
+      @include rounded-card;
+    } @else if $name == 'raised' {
+      @include raised-card;
+    } @else if $name == 'outlined' {
+      @include raised-card;
+    }
+  }
+
+  @mixin applyBoolProp($prop) {
+    > div.#{$prop} {
+      @include dynamicMixin($prop);
+    }
+    > div:not(.not-#{$prop}) {
+      @if #{$prop} {
+        @include dynamicMixin($prop);
+      }
+    }
+  }
+
+  @include applyBoolProp('rounded');
+
+  > div.outlined {
+    @include outlined-card;
+  }
+  > div:not(.not-outlined) {
+    @if $outlined {
+      @include outlined-card;
+    }
+  }
+
+  > div.raised {
+    @include raised-card;
+  }
+  > div:not(.not-raised) {
+    @if $raised {
+      @include raised-card;
+    }
   }
 }

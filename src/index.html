@@ -11,17 +11,18 @@
 </head>
 <body>
   <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
-  <h-card>
+  <h-card not-raised not-outlined>
     <p>Une carte sans bordure</p>
   </h-card>
-  <h-card outlined>
+  <h-card outlined not-raised>
     <p>Une carte avec bordure</p>
+    <div style="background-color: red;">pp</div>
   </h-card>
-  <h-card outlined rounded>
+  <h-card outlined not-raised>
     <p>Une carte avec bordure et bords ronds</p>
   </h-card>
-  <h-card raised>
-    <p>Une carte avec shadow</p>
+  <h-card raised not-rounded>
+    <p>Une carte avec shadow sans bords ronds</p>
   </h-card>
   <div>
     Je suis une enDIV

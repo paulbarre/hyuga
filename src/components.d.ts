@@ -11,6 +11,9 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface HCard {
+    'notOutlined'?: boolean;
+    'notRaised'?: boolean;
+    'notRounded'?: boolean;
     'outlined'?: boolean;
     'raised'?: boolean;
     'rounded'?: boolean;
@@ -53,6 +56,9 @@ declare global {
 
 declare namespace LocalJSX {
   interface HCard {
+    'notOutlined'?: boolean;
+    'notRaised'?: boolean;
+    'notRounded'?: boolean;
     'outlined'?: boolean;
     'raised'?: boolean;
     'rounded'?: boolean;
