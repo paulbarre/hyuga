@@ -8,11 +8,18 @@ import { Component, h, Prop } from '@stencil/core'
 export class Card {
   @Prop() outlined?: boolean
 
+  @Prop() raised?: boolean
+
+  @Prop() rounded?: boolean
+
   render() {
     return (
       <div
         class={{
-          'outlined': this.outlined
+          'content': true,
+          'rounded': this.rounded,
+          'outlined': this.outlined,
+          'raised': this.raised
         }}
       >
         <slot></slot>

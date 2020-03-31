@@ -1,13 +1,26 @@
 :host {
+  --card-padding: 10px;
   --card-border-width: thin;
   --card-border-style: solid;
   --card-border-color: black;
-  --card-border-radius: 5px;
+  --card-rounded-radius: 5px;
+  --card-box-shadow: 0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);
+
+  .content {
+    padding: var(--card-padding);
+  }
+
+  .rounded {
+    border-radius: var(--card-rounded-radius);
+  }
 
   .outlined {
     border-width: var(--card-border-width);
     border-style: var(--card-border-style);
     border-color: var(--card-border-color);
-    border-radius: 5px;
+  }
+
+  .raised {
+    box-shadow: var(--card-box-shadow);
   }
 }
