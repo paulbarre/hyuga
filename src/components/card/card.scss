@@ -1,7 +1,6 @@
 :host {
-  $rounded: true;
-  $outlined: false;
-  $raised: true;
+
+  $card-defaults-prop: ('rounded': true, 'outlined': false, 'raised': true);
 
   $card-padding: 10px;
   $card-outlined-width: thin;
@@ -10,62 +9,45 @@
   $card-rounded-radius: 5px;
   $card-raised-shadow: 0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);
 
-  @mixin rounded-card {
-    border-radius: $card-rounded-radius;
-  }
-
-  @mixin raised-card {
-    box-shadow: $card-raised-shadow;
-  }
-
-  @mixin outlined-card {
-    border-width: $card-outlined-width;
-    border-style: $card-outlined-style;
-    border-color: $card-outlined-color;
-  }
+  $card-rounded-radius: 5px;
 
   > div {
     padding: $card-padding;
   }
 
-  @mixin dynamicMixin($name) {
-    @if $name == 'rounded' {
-      @include rounded-card;
-    } @else if $name == 'raised' {
-      @include raised-card;
-    } @else if $name == 'outlined' {
-      @include raised-card;
+  @mixin applyRoundStyle {
+    border-radius: $card-rounded-radius;
+  }
+
+  @mixin applyRaiseStyle {
+    box-shadow: $card-raised-shadow;
+  }
+
+  @mixin applyOutlineStyle {
+    border-width: $card-outlined-width;
+    border-style: $card-outlined-style;
+    border-color: $card-outlined-color;
+  }
+
+  @mixin applyProp($prop) {
+    @if $prop == 'rounded' {
+      @include applyRoundStyle;
+    } @else if $prop == 'raised' {
+      @include applyRaiseStyle;
+    } @else if $prop == 'outlined' {
+      @include applyOutlineStyle;
     }
   }
 
-  @mixin applyBoolProp($prop) {
-    > div.#{$prop} {
-      @include dynamicMixin($prop);
-    }
-    > div:not(.not-#{$prop}) {
-      @if #{$prop} {
-        @include dynamicMixin($prop);
+  @each $prop, $val in $card-defaults-prop {
+    @if $val {
+      > div:not(.not-#{$prop}) {
+        @include applyProp($prop);
       }
-    }
-  }
-
-  @include applyBoolProp('rounded');
-
-  > div.outlined {
-    @include outlined-card;
-  }
-  > div:not(.not-outlined) {
-    @if $outlined {
-      @include outlined-card;
-    }
-  }
-
-  > div.raised {
-    @include raised-card;
-  }
-  > div:not(.not-raised) {
-    @if $raised {
-      @include raised-card;
+    } @else {
+      > div.#{$prop} {
+        @include applyProp($prop);
+      }
     }
   }
 }
