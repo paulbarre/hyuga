@@ -2,7 +2,7 @@
   "name": "hyuga",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
     "build": "webpack",
     "lint": "eslint --ext ts ./src/",
@@ -31,5 +31,8 @@
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
-  }
+  },
+  "files": [
+    "dist/"
+  ]
 }
