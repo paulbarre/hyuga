@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/paulbarre/hyuga/issues"
   },
-  "homepage": "https://github.com/paulbarre/hyuga#readme"
+  "homepage": "https://github.com/paulbarre/hyuga#readme",
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
 }
