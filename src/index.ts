@@ -1,1 +1,1 @@
-console.log('Bonjour')
+import './components'
