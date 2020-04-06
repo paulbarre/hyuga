@@ -1,6 +1,9 @@
 class HCard extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = 'Bonjour, je suis une carte'
+    const shadow = this.attachShadow({ mode: 'open' })
+    const div = document.createElement('div')
+    div.innerHTML = 'Bonjour, je suis une carte'
+    shadow.appendChild(div)
   }
 }
 window.customElements.define('h-card', HCard)
