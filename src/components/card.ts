@@ -1,4 +1,4 @@
-import './card.css'
+import './card.scss'
 
 class HCard extends HTMLElement {
   connectedCallback() {

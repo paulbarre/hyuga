@@ -1,0 +1,6 @@
+$primary: blue;
+
+h-card {
+  --text-color: #{$primary};
+  color: $primary;
+}
