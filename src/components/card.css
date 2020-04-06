@@ -1,7 +1,4 @@
-:host {
+h-card {
   --text-color: blue;
-}
-
-div {
   color: var(--text-color);
 }
