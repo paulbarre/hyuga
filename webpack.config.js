@@ -11,10 +11,14 @@ module.exports = {
         test: /\.ts$/,
         use: 'ts-loader',
       },
+      {
+        test: /\.css$/,
+        use: ['css-loader'],
+      },
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', '.css'],
   },
   plugins: [
     new CleanWebpackPlugin(),
